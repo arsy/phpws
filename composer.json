@@ -1,0 +1,12 @@
+{
+  "autoload": {
+    "psr-4": {
+      "Arsy\\" : "src"
+    }
+  },
+
+  "require": {
+    "cboden/ratchet": "0.3.*",
+    "monolog/monolog": "^1.23"
+  }
+}

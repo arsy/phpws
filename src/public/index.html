@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>WS</title>
+</head>
+<body>
+<script>
+    var ws = new WebSocket("ws://localhost:6868");
+
+    ws.onopen = function (e) {
+        console.log(e);
+
+        var message = {
+            "toId": 104,
+            "message": "Hi 104 ?",
+            "red": 0
+        };
+
+        ws.send(JSON.stringify(message));
+    };
+
+    ws.onmessage = function (e) {
+        var payload = JSON.parse(e.data);
+
+//        if (payload.type === "ack") {
+//            localStorage.setItem("ack", payload.data.id);
+//        }
+
+        if (payload.type === "msg") {
+            console.log(payload.data)
+        }
+    };
+
+
+</script>
+</body>
+</html>
